@@ -113,7 +113,7 @@ If you'd like persistent cache to rather store keys using an encoding of your pr
 
 Please send feedback and comments to the authors at:
 
-Ernst van Graan <ernst.van.graan@gmail.com>
+Ernst van Graan <ernstvangraan@gmail.com>
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)

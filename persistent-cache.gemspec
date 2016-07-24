@@ -5,7 +5,7 @@ require 'persistent-cache/version'
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Ernst van Graan"]
-  gem.email         = ["ernst.van.graan@gmail.com"]
+  gem.email         = ["ernstvangraan@gmail.com"]
   gem.description   = %q{Persistent Cache using a pluggable back-end (e.g. SQLite)}
   gem.summary       = %q{Persistent Cache has a default freshness threshold of 179 days after which entries are no longer returned}
   gem.homepage      = "https://github.com/evangraan/persistent-cache.git"

@@ -1,6 +1,7 @@
 # Persistent::Cache
 
 [![Gem Version](https://badge.fury.io/rb/persistent-cache.png)](https://badge.fury.io/rb/persistent-cache)
+[![Build Status](http://soar-ci.dev.auto-h.net:8080/buildStatus/icon?job=persistent-cache)](http://soar-ci.dev.auto-h.net:8080/job/persistent-cache/)
 
 Persistent cache behaves like a hash, with a pluggable back-end. Currently sqlite3, file system directory and RAM back-ends are provided. The cache defaults to type STORAGE_SQLITE
 

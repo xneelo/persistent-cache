@@ -1,5 +1,7 @@
 # Persistent::Cache
 
+[![Gem Version](https://badge.fury.io/rb/persistent-cache.png)](https://badge.fury.io/rb/persistent-cache)
+
 Persistent cache behaves like a hash, with a pluggable back-end. Currently sqlite3, file system directory and RAM back-ends are provided. The cache defaults to type STORAGE_SQLITE
 
 Values in the cache have a default freshness period of 15465600 ms. This can be configured in the cache initializer. Setting fresh = nil indicates that data remains fresh for-ever. Each user of the cache may have his own independent freshness value. Not though that accessing a stale entry deletes it from the cache. You can use timestamp?(key) to read the timestamp of an entry. If stale data is requested from the cache, nil is returned. Data is marshalled before storage. If a key is not found in the cache, nil is returned. Setting the value of a key in the cache to nil deletes the entry. If required, creation time of an entry can be specified using set(key, value, timestamp)
@@ -114,9 +116,3 @@ If you'd like persistent cache to rather store keys using an encoding of your pr
 Please send feedback and comments to the authors at:
 
 Ernst van Graan <ernstvangraan@gmail.com>
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request

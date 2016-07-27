@@ -21,9 +21,7 @@ module Persistent
     def initialize(storage_details, fresh = FRESH, storage = STORAGE_SQLITE)
       raise ArgumentError.new("No storage details provided") if storage_details.nil? or storage_details == ""
 
-      @storage = StorageSQLite.new(storage_details) if storage == STORAGE_SQLITE
-      @storage = StorageDirectory.new(storage_details) if storage == STORAGE_DIRECTORY
-      @storage = StorageRAM.new(storage_details) if storage == STORAGE_RAM
+      @storage = create_storage(storage, storage_details)
       @fresh = fresh
       @storage_details = storage_details
 
@@ -85,6 +83,12 @@ module Persistent
     end
 
     private
+
+    def create_storage(storage, storage_details)
+      return StorageSQLite.new(storage_details) if storage == STORAGE_SQLITE
+      return StorageDirectory.new(storage_details) if storage == STORAGE_DIRECTORY
+      return StorageRAM.new(storage_details) if storage == STORAGE_RAM
+    end
 
     def encode_if_requested(key)
       return key.encode(@encoding) if (not @encoding.nil?) and (key.is_a?(String))

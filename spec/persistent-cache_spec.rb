@@ -162,7 +162,6 @@ describe Persistent::Cache do
     end
 
     it "should be able to handle multiple accesses to the same db" do
-      #pending "find a better way to test this, currently you need to spawn multiple rspecs running this test to hit the error if the busy_timeout is not specified"
       pcache = Persistent::Cache.new("multidb") 
       pcache["multi_test"] = 0
 

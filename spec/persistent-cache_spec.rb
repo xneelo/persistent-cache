@@ -137,7 +137,7 @@ describe Persistent::Cache do
 
     it "should return the list of keys when asked" do
       setup_cache
-      expect(@pcache.keys).size.to eq(3)
+      expect(@pcache.keys.size).to eq(3)
       expect(@pcache.keys.include?("one")).to eq(true)
       expect(@pcache.keys.include?("two")).to eq(true)
       expect(@pcache.keys.include?("three")).to eq(true)
@@ -149,10 +149,10 @@ describe Persistent::Cache do
       @pcache.each do |key, value|
         test << "#{key} => #{value}"
       end
-      expect(test).size.to eq(3)
-      expect(test.include?("one")).to eq(true)
-      expect(test.include?("two")).to eq(true)
-      expect(test.include?("three")).to eq(true)
+      expect(test.size).to eq(3)
+      expect(test.include?("one => value one")).to eq(true)
+      expect(test.include?("two => value two")).to eq(true)
+      expect(test.include?("three => value three")).to eq(true)
     end
 
     it "should delete all entries in the database when asked to clear" do

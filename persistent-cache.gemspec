@@ -18,8 +18,9 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '~> 2.0'
   gem.version       = Persistent::VERSION
   gem.add_development_dependency 'rspec', '2.12.0'
-  gem.add_development_dependency 'simplecov', "0.12.0"
-  gem.add_development_dependency 'simplecov-rcov', "~> 0.2.3"
+  gem.add_development_dependency 'coveralls'
+  # gem.add_development_dependency 'simplecov', "0.12.0"
+  # gem.add_development_dependency 'simplecov-rcov', "~> 0.2.3"
   gem.add_development_dependency 'byebug'
   gem.add_dependency "eh", "~> 1.0.0"
   gem.add_dependency "persistent-cache-storage-api", "~> 0.1.4"

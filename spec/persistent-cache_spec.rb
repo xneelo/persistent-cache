@@ -167,7 +167,7 @@ describe Persistent::Cache do
       pcache["multi_test"] = 0
 
       threads = []
-      100.times do |i|
+      100.times do
         threads << Thread.new do
           Thread.current['pcache'] = Persistent::Cache.new("multidb") 
           if (!Thread.current['pcache'].nil? && !Thread.current['pcache']["multi_test"].nil?)
@@ -235,6 +235,7 @@ describe Persistent::Cache do
     def setup_cache(encoding = nil)
       FileUtils.rm_f(@db_name)
       @pcache = Persistent::Cache.new(@db_name, 1)
+      @pcache.encoding = encoding if encoding
     end
   end
 end

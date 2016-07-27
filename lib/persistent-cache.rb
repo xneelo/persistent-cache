@@ -48,7 +48,7 @@ module Persistent
       lookup_key(key)
     end
 
-    def each(&block)
+    def each(&_block)
       keys.each do |key|
         yield key, lookup_key(key)
       end
@@ -123,7 +123,7 @@ module Persistent
 
     def delete_entry(key)
       k = encode_if_requested(key)
-      @storage.delete_entry(key)
+      @storage.delete_entry(k)
     end
 
     def nil_result?(result)

@@ -87,7 +87,7 @@ describe Persistent::StorageSQLite do
     end
 
     it "should store the key/value pair in the db, with a timestamp specified" do
-      attempte = 0
+      attempts = 0
       begin
         test_time = (Time.now - 2500)
         @iut.save_key_value_pair(@test_key, @test_value, test_time)

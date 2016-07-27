@@ -1,6 +1,9 @@
 # Persistent::Cache
 
 [![Gem Version](https://badge.fury.io/rb/persistent-cache.png)](https://badge.fury.io/rb/persistent-cache)
+[![Build Status](https://travis-ci.org/evangraan/persistent-cache.svg?branch=master)](https://travis-ci.org/evangraan/persistent-cache)
+[![Coverage Status](https://coveralls.io/repos/github/evangraan/persistent-cache/badge.svg?branch=master)](https://coveralls.io/github/evangraan/persistent-cache?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4157799e2f2b4102bade0bd543e5cbbc)](https://www.codacy.com/app/ernst-van-graan/persistent-cache?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=evangraan/persistent-cache&amp;utm_campaign=Badge_Grade)
 
 Persistent cache behaves like a hash, with a pluggable back-end. Currently sqlite3, file system directory and RAM back-ends are provided. The cache defaults to type STORAGE_SQLITE
 

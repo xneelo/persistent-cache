@@ -4,8 +4,8 @@ Coveralls.wear!
 require 'rspec'
 require 'rspec/mocks'
 require 'tempfile'
-require 'simplecov'
-require 'simplecov-rcov'
+#require 'simplecov'
+#require 'simplecov-rcov'
 require 'byebug'
 require "persistent-cache"
 require "persistent-cache/storage_sqlite"

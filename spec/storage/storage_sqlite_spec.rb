@@ -67,90 +67,55 @@ describe Persistent::StorageSQLite do
 
   context "when asked to store a key value pair" do
     it "should store the key/value pair in the db, with the current time as timestamp" do
-      attempts = 0
-      begin
-        start_time = Time.now - 1
-        @iut.save_key_value_pair(@test_key, @test_value)
-        handle = SQLite3::Database.open(@db_name)
-        result = handle.execute "select value, timestamp from #{Persistent::StorageSQLite::DB_TABLE} where key=?", serialize(@test_key)
-        expect(result.nil?).to eq(false)
-        expect(result[0].nil?).to eq(false)
-        expect(result[0][0]).to eq(serialize(@test_value))
-        test_time = Time.parse(result[0][1])
-        expect(test_time).to be > start_time
-        expect(test_time).to be < start_time + 600
-      rescue SQLite3::IOException
-        attempts = attempts + 1
-        raise if attempts > 3
-        retry
-      end
+      start_time = Time.now - 1
+      @iut.save_key_value_pair(@test_key, @test_value)
+      handle = SQLite3::Database.open(@db_name)
+      result = handle.execute "select value, timestamp from #{Persistent::StorageSQLite::DB_TABLE} where key=?", serialize(@test_key)
+      expect(result.nil?).to eq(false)
+      expect(result[0].nil?).to eq(false)
+      expect(result[0][0]).to eq(serialize(@test_value))
+      test_time = Time.parse(result[0][1])
+      expect(test_time).to be > start_time
+      expect(test_time).to be < start_time + 600
     end
 
     it "should store the key/value pair in the db, with a timestamp specified" do
-      attempts = 0
-      begin
-        test_time = (Time.now - 2500)
-        @iut.save_key_value_pair(@test_key, @test_value, test_time)
-        handle = SQLite3::Database.open(@db_name)
-        result = handle.execute "select value, timestamp from #{Persistent::StorageSQLite::DB_TABLE} where key=?", serialize(@test_key)
-        expect(result.nil?).to eq(false)
-        expect(result[0].nil?).to eq(false)
-        expect(result[0][0]).to eq(serialize(@test_value))
-        time_retrieved = Time.parse(result[0][1])
-        expect(time_retrieved.to_s).to eq(test_time.to_s)
-      rescue SQLite3::IOException
-        attempts = attempts + 1
-        raise if attempts > 3
-        retry
-      end
+      test_time = (Time.now - 2500)
+      @iut.save_key_value_pair(@test_key, @test_value, test_time)
+      handle = SQLite3::Database.open(@db_name)
+      result = handle.execute "select value, timestamp from #{Persistent::StorageSQLite::DB_TABLE} where key=?", serialize(@test_key)
+      expect(result.nil?).to eq(false)
+      expect(result[0].nil?).to eq(false)
+      expect(result[0][0]).to eq(serialize(@test_value))
+      time_retrieved = Time.parse(result[0][1])
+      expect(time_retrieved.to_s).to eq(test_time.to_s)
     end
 
     it "should overwrite the existing key/value pair if they already exist" do
-      attempts = 0
-      begin
-        @iut.save_key_value_pair(@test_key, @test_value)
-        @iut.save_key_value_pair(@test_key, "testvalue2")
-        handle = SQLite3::Database.open(@db_name)
-        result = handle.execute "select value from #{Persistent::StorageSQLite::DB_TABLE} where key=?", serialize(@test_key)
-        expect(result.nil?).to eq(false)
-        expect(result[0].nil?).to eq(false)
-        expect(result.size).to eq(1)
-        expect(result[0][0]).to eq(serialize("testvalue2"))
-      rescue SQLite3::IOException
-        attempts = attempts + 1
-        raise if attempts > 3
-        retry
-      end
+      @iut.save_key_value_pair(@test_key, @test_value)
+      @iut.save_key_value_pair(@test_key, "testvalue2")
+      handle = SQLite3::Database.open(@db_name)
+      result = handle.execute "select value from #{Persistent::StorageSQLite::DB_TABLE} where key=?", serialize(@test_key)
+      expect(result.nil?).to eq(false)
+      expect(result[0].nil?).to eq(false)
+      expect(result.size).to eq(1)
+      expect(result[0][0]).to eq(serialize("testvalue2"))
     end
   end
 
   context "When looking up a value given its key" do
     it "should retrieve the value from the database" do
-      attempts = 0
-      begin
-        @iut.save_key_value_pair(@test_key, @test_value)
-        result = @iut.lookup_key(@test_key)
-        expect(result[0]).to eq(@test_value)
-      rescue SQLite3::IOException
-        attempts = attempts + 1
-        raise if attempts > 3
-        retry
-      end
+      @iut.save_key_value_pair(@test_key, @test_value)
+      result = @iut.lookup_key(@test_key)
+      expect(result[0]).to eq(@test_value)
     end
 
     it "should retrieve the timestamp when the value was stored from the database" do
-      attempts = 0
-      begin
-        now = Time.now.to_s
-        @iut.save_key_value_pair(@test_key, @test_value)
-        sleep 1
-        result = @iut.lookup_key(@test_key)
-        expect(result[1]).to eq(now)
-      rescue SQLite3::IOException
-        attempts = attempts + 1
-        raise if attempts > 3
-        retry
-      end
+      now = Time.now.to_s
+      @iut.save_key_value_pair(@test_key, @test_value)
+      sleep 1
+      result = @iut.lookup_key(@test_key)
+      expect(result[1]).to eq(now)
     end
 
     it "should return an empty array if a key is not in the database" do
@@ -166,19 +131,12 @@ describe Persistent::StorageSQLite do
     end
 
     it "should delete the entry if it is present" do
-      attempts = 0
-      begin
-        @iut.save_key_value_pair(@test_key, @test_value)
-        result = @iut.lookup_key(@test_key)
-        expect(result[0]).to eq(@test_value)
-        @iut.delete_entry(@test_key)
-        result = @iut.lookup_key(@test_key)
-        expect(result).to eq(nil)
-      rescue SQLite3::IOException
-        attempts = attempts + 1
-        raise if attempts > 3
-        retry
-      end
+      @iut.save_key_value_pair(@test_key, @test_value)
+      result = @iut.lookup_key(@test_key)
+      expect(result[0]).to eq(@test_value)
+      @iut.delete_entry(@test_key)
+      result = @iut.lookup_key(@test_key)
+      expect(result).to eq(nil)
     end
   end
 
@@ -234,8 +192,6 @@ describe Persistent::StorageSQLite do
     iut.save_key_value_pair("one", "one")
     iut.save_key_value_pair("two", "two")
     iut.save_key_value_pair("three", "three")
-    rescue SQLite3::IOException
-      retry
   end
 
   def delete_database

@@ -168,7 +168,7 @@ describe Persistent::Cache do
       threads = []
       100.times do
         threads << Thread.new do
-          Thread.current['pcache'] = Persistent::Cache.new("multidb") 
+          Thread.current['pcache'] = Persistent::Cache.new("multidb")
           if (!Thread.current['pcache'].nil? && !Thread.current['pcache']["multi_test"].nil?)
             Thread.current['pcache']["multi_test"] += 1
           end

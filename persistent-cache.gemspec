@@ -4,11 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'persistent-cache/version'
 
 Gem::Specification.new do |gem|
-  gem.authors       = ['Hetzner Pty Ltd']
-  gem.email         = ['kernels@hetzner.co.za']
   gem.description   = %q{Persistent Cache using a pluggable back-end (e.g. SQLite)}
   gem.summary       = %q{Persistent Cache has a default freshness threshold of 179 days after which entries are no longer returned}
-  gem.homepage      = 'https://github.com/hetznerZA/persistent-cache.git'
+  gem.homepage      = 'https://github.com/xneelo/persistent-cache.git'
+  gem.authors       = ["Ernst Van Graan", "xneelo (Pty) Ltd"]
+  gem.email         = ["ernst.vangraan@gmail.com"]
+  gem.license       = "MIT"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

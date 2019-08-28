@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    persistent-cache (1.1.0)
+    persistent-cache (1.1.1)
       eh (~> 1.0)
       persistent-cache-storage-api (~> 0.1.4)
       persistent-cache-storage-directory (~> 0.1.2)

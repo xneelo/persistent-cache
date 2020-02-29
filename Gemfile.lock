@@ -32,7 +32,7 @@ GEM
       eh (~> 1.0.0)
       persistent-cache-storage-api (~> 0.1)
       sqlite3 (~> 1.4)
-    rake (12.3.2)
+    rake (12.3.3)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)

@@ -16,12 +16,12 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = 'persistent-cache'
   gem.require_paths = ['lib']
-  gem.required_ruby_version = '~> 2.0'
+  gem.required_ruby_version = ['>= 2.0', '< 3.1.20']
   gem.version       = Persistent::VERSION
-  gem.add_development_dependency 'rspec', '2.12.0'
+  gem.add_development_dependency 'rspec', '3.11.0'
   gem.add_development_dependency 'coveralls', '~> 0.8'
-  gem.add_development_dependency 'rake', '~> 12.3'
-  gem.add_development_dependency 'byebug', '~> 9.0'
+  gem.add_development_dependency 'rake', '13.0.6'
+  gem.add_development_dependency 'byebug', '~> 11.1'
   gem.add_dependency 'eh', '~> 1.0'
   gem.add_dependency 'persistent-cache-storage-api', '~> 0.1.4'
   gem.add_dependency 'persistent-cache-storage-sqlite', '~> 0.1.3'

@@ -11,7 +11,7 @@ Values in the cache have a default freshness period of 15465600 ms. This can be 
 
 Note that when using a back-end that requires marshalling (e.g. sqlite) the string encoding for []= and [] needs to be the same (e.g. UTF-8, US-ASCII, etc.) If the coding does not match, [] will not be able to find the entry during lookup and will return nil. See the section on 'Encoding' below for more detail.
 
-This gem was sponsored by Hetzner (Pty) Ltd - http://hetzner.co.za
+This gem was sponsored by xneelo (Pty) Ltd - https://xneelo.co.za
 
 ## StorageSQLite
 

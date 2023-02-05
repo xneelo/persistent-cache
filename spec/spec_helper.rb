@@ -1,11 +1,15 @@
-require 'coveralls'
-Coveralls.wear!
+require 'simplecov'
+require 'simplecov-lcov'
+
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+SimpleCov.start do
+  add_filter '/spec/'
+end
 
 require 'rspec'
 require 'rspec/mocks'
 require 'tempfile'
-# require 'simplecov'
-# require 'simplecov-rcov'
 require 'byebug'
 require "persistent-cache"
 require "persistent-cache/storage_sqlite"
@@ -32,11 +36,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 end
-
-# SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-# SimpleCov.start do
-#   add_filter "/spec/"
-# end
 
 def get_database_name
   path = Tempfile.new("persistent-cache-spec-testdb").path

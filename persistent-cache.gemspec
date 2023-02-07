@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = 'persistent-cache'
   gem.require_paths = ['lib']
-  gem.required_ruby_version = '~> 2.0'
+  gem.required_ruby_version = '>= 2.0'
   gem.version       = Persistent::VERSION
   gem.add_development_dependency 'rspec', '2.12.0'
   gem.add_development_dependency 'simplecov', '~> 0.22'

@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: [ '2.5', '2.6', '2.7' ]
+        ruby: [ '2.5', '2.6', '2.7', '3.0', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
@@ -20,7 +20,7 @@ jobs:
         with:
           path-to-lcov: coverage/lcov/persistent-cache.lcov
           github-token: ${{ secrets.github_token }}
-          flag-name: test-${{ matrix.test_number }}
+          flag-name: test-ruby-${{ matrix.ruby }}
           parallel: true
   finish:
     needs: test

@@ -20,7 +20,7 @@ jobs:
         with:
           path-to-lcov: coverage/lcov/persistent-cache.lcov
           github-token: ${{ secrets.github_token }}
-          flag-name: test-${{ matrix.test_number }}
+          flag-name: test-ruby-${{ matrix.ruby }}
           parallel: true
   finish:
     needs: test

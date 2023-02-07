@@ -1,0 +1,33 @@
+---
+name: Tests
+on: [ push, pull_request ]
+jobs:
+  test:
+    name: test (Ruby ${{ matrix.ruby }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: [ '2.5', '2.6', '2.7' ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bundle exec rake
+      - uses: coverallsapp/github-action@master
+        with:
+          path-to-lcov: coverage/lcov/persistent-cache.lcov
+          github-token: ${{ secrets.github_token }}
+          flag-name: test-${{ matrix.test_number }}
+          parallel: true
+  finish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel-finished: true

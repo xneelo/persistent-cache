@@ -1,6 +1,5 @@
-task :default => :test
+require 'rspec/core/rake_task'
 
-task :test do
-  sh %{bundle install}
-  sh %{bundle exec rspec -cfd spec}
-end
+RSpec::Core::RakeTask.new(:spec)
+
+task default: :spec

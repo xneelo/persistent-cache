@@ -1,6 +1,6 @@
 # Persistent::Cache
 
-[![Gem Version](https://badge.fury.io/rb/persistent-cache.png)](https://badge.fury.io/rb/persistent-cache)
+[![Gem Version](https://badge.fury.io/rb/persistent-cache.svg)](https://badge.fury.io/rb/persistent-cache)
 [![Build Status](https://github.com/xneelo/persistent-cache/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/xneelo/persistent-cache/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/xneelo/persistent-cache/badge.svg?branch=master)](https://coveralls.io/github/xneelo/persistent-cache?branch=master)
 
